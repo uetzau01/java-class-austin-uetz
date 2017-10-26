@@ -94,7 +94,7 @@ public class FileIO {
                                         faker.name().firstName(),
                                         faker.address().fullAddress(),
                                         faker.phoneNumber().phoneNumber());
-      outputFile.write(str);
+      outputFile.print(str);
     }
     outputFile.close();
   }

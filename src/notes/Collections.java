@@ -79,3 +79,13 @@ class Student {
     return this.grade;
   }
 }
+
+/*
+int[][] matrix = new int[10][10];
+for (int i = 0; i < matrix.length; i++) {
+    for (int j = 0; j < matrix[0].length; j++) {
+        matrix[i][j] = i * j;
+            System.out.println(matrix[i][j])
+}
+}
+*/
