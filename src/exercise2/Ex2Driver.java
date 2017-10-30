@@ -30,6 +30,7 @@ public class Ex2Driver {
     System.out.println(task8(numberLst, 75));
     task9();
     task10(task9());
+
   }
 
   /**
