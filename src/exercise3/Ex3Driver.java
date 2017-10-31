@@ -89,7 +89,29 @@ public class Ex3Driver {
    * @param matrix2
    * @return the resulting matrix
    */
-  public static int[][] multiply(int[][] matrix1, int[][] matrix2) {
-    throw new UnsupportedOperationException();
+    public static int[][] multiply(int[][] matrix1, int[][] matrix2) {
+    int m1Row = matrix1.length;
+    int m1Col = matrix1[0].length;
+    int m2Row = matrix2.length;
+    int m2Col = matrix2[0].length;
+    int[][] resultMatrix = new int[m1Row][m2Col];
+    
+    //got help from stack overflow
+    if (m1Col != m2Row) {
+        throw new IllegalArgumentException("ERROR: You cannot multiple those matrices");
+    }
+    for (int i=0; i < m1Row; ++i) {
+        for (int j=0; j < m2Col; ++j) {
+            for (int k=0; k< m1Col; ++k) {
+                resultMatrix[i][j] = resultMatrix[i][j] + (matrix1[i][k]*matrix2[k][j]);
+            }
+        }
+    }
+//    for (int i=0; i<resultMatrix.length; ++i) {
+//        for (int j=0; j<resultMatrix[0].length; ++j) {
+//            System.out.print(resultMatrix[i][j] + " ");
+//        } System.out.println();
+//    }
+   return resultMatrix; 
   }
 }
