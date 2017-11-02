@@ -75,15 +75,27 @@ public class Ex3Driver {
    * @return matrix read from a file
    * @throws java.io.FileNotFoundException
    */
-  public static int[][] readFile(String filename) throws FileNotFoundException, IOException {
-    BufferedReader inputFile = new BufferedReader( new FileReader(filename));
-    String line;
-    while ((line = inputFile.readLine()) != null) {
-        Scanner lineContent = new Scanner(line);
-        while (lineContent.hasNext()) {
-            System.out.println(lineContent.next());
+  public static int[][] readFile(String filename) throws FileNotFoundException {
+    int col = 0;
+    int row = 0;
+
+    File file = new File(filename);
+    BufferedReader reader = new BufferedReader(new FileReader(file));
+    Scanner scn = new Scanner(reader);
+    
+    String dimensions = scn.nextLine();
+    System.out.println(dimensions);
+    int dimensionList[] = dimensions.split("\\s+");
+    row = dimensionList[0];
+    col = dimensionList[1];
+    int[][] matrix = new int[row][col];
+    
+    while (scn.hasNextLine()) {
+        for (int i=0; i<row; ++i) {
+            
         }
-    }
+        
+    } return matrix;
     /*
     10. Open the input file and create a Scanner object to read its content
     20. Read two values (rows and columns) from the first line, if possible
