@@ -1,7 +1,10 @@
 package exercise3;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -17,7 +20,7 @@ public class Ex3Driver {
    * main application function
    * @param args 
    */
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
     int[][] matrix1 = null;
     int[][] matrix2 = null;
     int[][] result = null;
@@ -72,8 +75,15 @@ public class Ex3Driver {
    * @return matrix read from a file
    * @throws java.io.FileNotFoundException
    */
-  public static int[][] readFile(String filename) throws FileNotFoundException {
-    throw new UnsupportedOperationException();
+  public static int[][] readFile(String filename) throws FileNotFoundException, IOException {
+    BufferedReader inputFile = new BufferedReader( new FileReader(filename));
+    String line;
+    while ((line = inputFile.readLine()) != null) {
+        Scanner lineContent = new Scanner(line);
+        while (lineContent.hasNext()) {
+            System.out.println(lineContent.next());
+        }
+    }
     /*
     10. Open the input file and create a Scanner object to read its content
     20. Read two values (rows and columns) from the first line, if possible
