@@ -1,9 +1,11 @@
 package exercise3;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
@@ -30,6 +32,8 @@ public class Ex3Driver {
     } catch (FileNotFoundException ex) {
       Logger.getLogger(Ex3Driver.class.getName()).log(Level.SEVERE, ex.toString(), ex);
     }
+    catch (IOException ex) {
+    }
     System.out.println("Matrix 1");
     printMatrix(matrix1);
     System.out.println("Matrix 2");
@@ -46,6 +50,8 @@ public class Ex3Driver {
       writeMatrix(result, PATH + "result.txt");
     } catch (FileNotFoundException ex) {
       Logger.getLogger(Ex3Driver.class.getName()).log(Level.SEVERE, ex.toString(), ex);
+    }
+    catch (IOException ex) {
     }
   }
   /**
@@ -66,8 +72,14 @@ public class Ex3Driver {
    * @param filename 
    * @throws java.io.FileNotFoundException 
    */
-  public static void writeMatrix(int[][] matrix, String filename) throws FileNotFoundException {
-    throw new UnsupportedOperationException();
+  public static void writeMatrix(int[][] matrix, String filename) throws FileNotFoundException, IOException {
+      PrintWriter outputFile = new PrintWriter(new FileWriter(filename));
+      for (int i=0; i<matrix.length; ++i) {
+          for (int j=0; j<matrix[0].length; ++j) {
+              outputFile.print(matrix[i][j] + " ");
+          } outputFile.println();
+      }
+      outputFile.close();
   }
   /**
    * Read a matrix from a file
@@ -75,7 +87,7 @@ public class Ex3Driver {
    * @return matrix read from a file
    * @throws java.io.FileNotFoundException
    */
-  public static int[][] readFile(String filename) throws FileNotFoundException {
+  public static int[][] readFile(String filename) throws FileNotFoundException, IOException {
     int col = 0;
     int row = 0;
 
@@ -84,17 +96,20 @@ public class Ex3Driver {
     Scanner scn = new Scanner(reader);
     
     String dimensions = scn.nextLine();
-    System.out.println(dimensions);
-    int dimensionList[] = dimensions.split("\\s+");
-    row = dimensionList[0];
-    col = dimensionList[1];
+    String dimensionList[] = dimensions.split("\\s+");
+    row = Integer.parseInt(dimensionList[0]);
+    col = Integer.parseInt(dimensionList[1]);
     int[][] matrix = new int[row][col];
     
-    while (scn.hasNextLine()) {
-        for (int i=0; i<row; ++i) {
-            
+    
+    for (int i=0; i<row; ++i) {        
+    String[] matrixList = null;
+    String line = scn.nextLine();
+    matrixList = line.split("\\s+");
+        for (int j=0; j<col; ++j) {
+            matrix[i][j] = Integer.parseInt(matrixList[j]);
         }
-        
+    
     } return matrix;
     /*
     10. Open the input file and create a Scanner object to read its content
@@ -129,11 +144,6 @@ public class Ex3Driver {
             }
         }
     }
-//    for (int i=0; i<resultMatrix.length; ++i) {
-//        for (int j=0; j<resultMatrix[0].length; ++j) {
-//            System.out.print(resultMatrix[i][j] + " ");
-//        } System.out.println();
-//    }
    return resultMatrix; 
   }
 }
