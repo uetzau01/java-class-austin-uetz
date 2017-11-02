@@ -95,11 +95,8 @@ public class FileIO {
                                         faker.name().firstName(),
                                         faker.address().fullAddress(),
                                         faker.phoneNumber().phoneNumber());
-<<<<<<< HEAD
-      outputFile.print(str);
-=======
+
       outputFile.println(str);
->>>>>>> 3950204a861d30e5652d24f14930af340c097cd9
     }
     outputFile.close();
   }
