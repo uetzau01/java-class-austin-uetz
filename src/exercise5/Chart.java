@@ -14,8 +14,26 @@ import java.util.regex.Pattern;
  * Class Chart
  * Task 8: Create a class Chart that contains a private data member HashMap<Integer, Song> (reuse class Song from task 7). Its constructor must take file name as a parameter, read data from the file (sample top40pop.csv is provided), create a new Song object from each line, and put that object into a HashMap using a song position as a key. Implement method getSong that takes an integer position as a parameter and returns a Song at that position. 
  * 
- * @author yasiro01
+ * @author Austin Uetz
  */
 public class Chart {
+    private HashMap<Integer, Song> top40pop = new HashMap<>();
+    
+    public Chart(String fileName) throws FileNotFoundException, IOException {
+        BufferedReader inputFile = new BufferedReader(new FileReader(fileName));
+        String line;
+        Integer position = 0;
+        while ((line = inputFile.readLine()) != null) {
+            String[] songData = line.split(",");
+            position = Integer.parseInt(songData[0]);
+            top40pop.put(position, new Song(songData[1],songData[2]));
+        }
+    } 
+    
+    public Song getSong(int position) {
+        return top40pop.get(position);
+    }
 
+    
+    
 }

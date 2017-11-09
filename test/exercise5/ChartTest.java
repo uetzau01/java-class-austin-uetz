@@ -1,5 +1,8 @@
 package exercise5;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +17,11 @@ public class ChartTest {
   
   @Before
   public void setUp() {
-    top40pop = new Chart("data/top40pop.csv");
+      try {
+          top40pop = new Chart("data/top40pop.csv");
+      } catch (IOException ex) {
+          Logger.getLogger(ChartTest.class.getName()).log(Level.SEVERE, null, ex);
+      }
   }
   
   @After

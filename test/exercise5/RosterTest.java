@@ -20,11 +20,11 @@ public class RosterTest {
   
   @Before
   public void setUp() {
-    try {
-      allStudents = new Roster("data/roster.csv");
-    } catch (IOException ex) {
-      Logger.getLogger(RosterTest.class.getName()).log(Level.SEVERE, null, ex);
-    }
+      try {
+          allStudents = new Roster("data/roster.csv");
+      } catch (IOException ex) {
+          Logger.getLogger(RosterTest.class.getName()).log(Level.SEVERE, null, ex);
+      }
   }
   
   @After
