@@ -1,5 +1,8 @@
 package exercise6;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -12,10 +15,16 @@ import static org.junit.Assert.*;
  * @author yasiro01
  */
 public class KangarooMobTest {
-  KangarooMob instance1 = new KangarooMob("data/zoo1.txt");
-  KangarooMob instance2 = new KangarooMob("data/zoo2.txt");
+  KangarooMob instance1;
+  KangarooMob instance2;
   
   public KangarooMobTest() {
+      try {
+          this.instance2 = new KangarooMob("data/zoo2.txt");
+          this.instance1 = new KangarooMob("data/zoo1.txt");
+      } catch (IOException ex) {
+          Logger.getLogger(KangarooMobTest.class.getName()).log(Level.SEVERE, null, ex);
+      }
   }
   
   @BeforeClass

@@ -1,5 +1,7 @@
 package exercise6;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -12,10 +14,12 @@ import static org.junit.Assert.*;
  * @author yasiro01
  */
 public class CrowMurderTest {
-  CrowMurder instance1 = new CrowMurder("data/zoo1.txt");
-  CrowMurder instance2 = new CrowMurder("data/zoo2.txt");
+  CrowMurder instance1;
+  CrowMurder instance2;
   
-  public CrowMurderTest() {
+  public CrowMurderTest() throws FileNotFoundException, IOException {
+        this.instance2 = new CrowMurder("data/zoo2.txt");
+        this.instance1 = new CrowMurder("data/zoo1.txt");
   }
   
   @BeforeClass

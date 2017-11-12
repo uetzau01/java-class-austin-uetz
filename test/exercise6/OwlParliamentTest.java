@@ -1,5 +1,8 @@
 package exercise6;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -12,10 +15,16 @@ import static org.junit.Assert.*;
  * @author yasiro01
  */
 public class OwlParliamentTest {
-  OwlParliament instance1 = new OwlParliament("data/zoo1.txt");
-  OwlParliament instance2 = new OwlParliament("data/zoo2.txt");
+  OwlParliament instance1;
+  OwlParliament instance2;
   
   public OwlParliamentTest() {
+      try {
+          this.instance2 = new OwlParliament("data/zoo2.txt");
+          this.instance1 = new OwlParliament("data/zoo1.txt");
+      } catch (IOException ex) {
+          Logger.getLogger(OwlParliamentTest.class.getName()).log(Level.SEVERE, null, ex);
+      }
   }
   
   @BeforeClass
