@@ -7,7 +7,8 @@ package exercise9;
 
 /**
  *
- * @author uetzau01
+ * @author Austin Uetz
+ * @assignment Exercise 9
  */
 public class Ex9JFrame extends javax.swing.JFrame {
 
