@@ -46,8 +46,9 @@ public class BookShop {
   
   public BookShop(BookShop anotherBookShop) {
       this();
-      for (Book b: anotherBookShop.catalog) {
-          catalog.add(b);
+      for (Book original: anotherBookShop.catalog) {
+          Book copy = new Book(original);
+          this.catalog.add(copy);
       }
   }
   
