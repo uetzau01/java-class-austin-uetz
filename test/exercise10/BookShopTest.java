@@ -58,7 +58,7 @@ public class BookShopTest {
    * Test of the constructor exception
    */
   @Test
-  public void testBookShopConstructorException() {
+  public void testBookShopConstructorException() throws IOException {
     System.out.println("BookShop.BookShop(filename)");
     try {
       BookShop shop4 = new BookShop("data/library4.txt");

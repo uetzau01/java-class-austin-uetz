@@ -17,32 +17,70 @@ import java.util.regex.Pattern;
  * @author yasiro01
  */
 public class BookShop {
+    ArrayList<Book> catalog;
 
   public BookShop() {
+      catalog = new ArrayList();
   }
   
-  public BookShop(String filename) throws FileNotFoundException {
+  public BookShop(String filename) throws FileNotFoundException, IOException {
+      this();
+      BufferedReader reader = new BufferedReader(new FileReader(filename));
+      
+      String line = null;
+      String author = null;
+      String title = null;
+      Double price = null;
+      Integer year = null;
+      
+      while ((line = reader.readLine()) != null) {
+          String[] bookInfo = line.split(",");
+          title = bookInfo[0];
+          author = bookInfo[1];
+          price = Double.parseDouble(bookInfo[2]);
+          year = Integer.parseInt(bookInfo[3]);
+          
+          catalog.add(new Book(title, author, price, year));
+      }
   }
   
   public BookShop(BookShop anotherBookShop) {
+      this();
+      for (Book b: anotherBookShop.catalog) {
+          catalog.add(b);
+      }
   }
   
   public void addNewTitle(Book book) {
+      catalog.add(book);
   }
   
   public int size() {
+      return catalog.size();
   }
   
   public void discountAll(Double discountPercent) {
+      for (Book b: this.catalog) {
+          b.price = b.price * (1 - discountPercent);
+      }
   }
   
   public void printCatalog() {
+      for (Book b: this.catalog) {
+          System.out.println(b.toString() + "\n");
+      }
   }
   
   public void order(Comparator<Book> comp) {
+      Collections.sort(catalog, comp);
   }
   
   public ArrayList<Book> getCatalog() {
+      ArrayList<Book> list = new ArrayList<>();
+      for (Book b: this.catalog) {
+          list.add(b);
+      }
+      return list;
   }
 
 }
