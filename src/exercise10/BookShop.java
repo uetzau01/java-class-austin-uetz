@@ -61,13 +61,13 @@ public class BookShop {
   
   public void discountAll(Double discountPercent) {
       for (Book b: this.catalog) {
-          b.price = b.price * (1 - discountPercent);
+          b.price = b.price - (b.price * discountPercent/100);
       }
   }
   
   public void printCatalog() {
       for (Book b: this.catalog) {
-          System.out.println(b.toString() + "\n");
+          System.out.println(b.toString());
       }
   }
   
