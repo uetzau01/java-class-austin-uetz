@@ -61,7 +61,7 @@ public class BookShop {
   
   public void discountAll(Double discountPercent) {
       for (Book b: this.catalog) {
-          b.price = b.price - (b.price * discountPercent/100);
+          b.price = b.price * ((100 - discountPercent) / 100);
       }
   }
   
